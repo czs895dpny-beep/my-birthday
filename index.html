@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أغلى الناس | رحلة ميدو وحبيبة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الصفحة الأولى: قفل الأمان وتاريخ الميلاد -->
+    <section class="screen active" id="page1">
+        <p class="subtitle">A SPECIAL DAY ✨</p>
+        <h1>يوم ميلاد أغلى الناس</h1>
+        <p class="description">قبل ما تبدئي الرحلة.. دخلي تاريخ عيد ميلادك عشان نتأكد إنك صاحبة الموقع! 🤍</p>
+        
+        <div class="date-inputs">
+            <select id="day">
+                <option value="">اليوم</option>
+                <option value="13">13</option>
+            </select>
+            <select id="month">
+                <option value="">الشهر</option>
+                <option value="3">مارس (3)</option>
+            </select>
+            <select id="year">
+                <option value="">السنة</option>
+                <option value="2010">2010</option>
+            </select>
+        </div>
+        
+        <p id="login-error" class="error-msg"></p>
+        <button class="start-btn" onclick="checkLogin()">دخول الرحلة 🚀</button>
+    </section>
+
+    <!-- الصفحة الثانية: أسئلة خفيفة ولطيفة -->
+    <section class="screen" id="page2">
+        <p class="subtitle">PART ONE · KNOW US</p>
+        <h2 id="q-title">اختبار خفيف</h2>
+        <div class="card-box">
+            <p id="q-text" class="question-text"></p>
+            <div id="q-options" class="options-grid"></div>
+            <p id="q-feedback" class="feedback"></p>
+        </div>
+        <button id="next-q-btn" class="start-btn" onclick="nextQuizQuestion()" style="display:none; margin-top:15px;">السؤال التالي ⬅️</button>
+    </section>
+
+    <!-- الصفحة الثالثة: لعبة مين أكتر؟ -->
+    <section class="screen" id="page3">
+        <p class="subtitle">PART TWO · WHO IS WHO</p>
+        <h2>لعبة مين أكتر؟ 🤔</h2>
+        <div class="card-box">
+            <p id="who-question" class="question-text"></p>
+            <div class="options-grid">
+                <button class="answer-btn" onclick="answerWho(true)">ميدو</button>
+                <button class="answer-btn" onclick="answerWho(false)">حبيبة</button>
+            </div>
+            <p id="who-feedback" class="feedback"></p>
+        </div>
+        <button id="next-who-btn" class="start-btn" onclick="nextWhoQuestion()" style="display:none; margin-top:15px;">التالي ⬅️</button>
+    </section>
+
+    <!-- الصفحة الرابعة: مقارنة الصور -->
+    <section class="screen" id="page4">
+        <p class="subtitle">PART THREE · THE INSPIRATION</p>
+        <h2>تفتكري ميدو بينبهر بمين أكتر؟ ✨</h2>
+        
+        <div class="images-compare">
+            <div class="img-card" onclick="selectInspiration(false)">
+                <img src="صوري/pic1.jpeg" alt="صورة 1">
+                <p>شخصية عادية</p>
+            </div>
+            <div class="img-card" onclick="selectInspiration(true)">
+                <img src="صوري/haboba.jpeg" alt="حبيبة">
+                <p>حبيبة ❤️</p>
+            </div>
+        </div>
+        <p id="inspiration-feedback" class="feedback"></p>
+        <button id="to-letter-btn" class="start-btn" onclick="goToLetter()" style="display:none; margin-top:15px;">اقرئي الرسالة 💌</button>
+    </section>
+
+    <!-- الصفحة الخامسة: الرسالة العميقة -->
+    <section class="screen" id="page5">
+        <p class="subtitle">PART FOUR · A SPECIAL LETTER</p>
+        <h2>من ميدو لأغلى شخص لقلبه 🤍</h2>
+        <div class="letter-box">
+            <p>
+                الرسالة دي من ميدو لأغلى شخص لقلبه. مهما يحصل هتفضل إنتِ الشخص اللي بحبه وبعشقه. مهما كان إنتِ الشخص الوحيد اللي بروحله وببقاش حابب أقعد معه بالساعات وأنا مش واخد بالي. بحب عنيكي أوي لما بشوفهم وبيسحروني. إنتِ البنوته الوحيدة اللي قلبي بيرقص من الفرحة لما أسمع صوتك أو أشوفك أو حتى أشوف رسالة منك. ديماً بتبهريني إذا كان بشاطرتك أو أسلوبك أو حنيتك أو طيبة قلبك. بتمنى متتغيريش وعايزك تفضلي حبيبة اللي بحبها وبعشقها. ربنا يخليكي لميدو وميحرمنيش منك. هتفضلي أميرتي وحبيبتي وصاحبتي وأختي والبيت اللي بحب أجيله دايماً.
+            </p>
+            <p class="letter-signature">الرسالة دي من أكتر شخص متيم بيكي وبيعشقك<br><strong>ميدو</strong></p>
+        </div>
+        <button class="start-btn" style="margin-top:20px;" onclick="goToCelebration()">الاحتفال الكبير 🎉</button>
+    </section>
+
+    <!-- الصفحة السادسة والأخيرة: الألعاب النارية ومجسم I LOVE YOU HABOBA -->
+    <section class="screen" id="page6">
+        <canvas id="fireworksCanvas"></canvas>
+        <div class="celebration-content">
+            <h1 class="love-title">I LOVE YOU HABOBA ❤️❤️</h1>
+            <div class="giant-heart">💖</div>
+            <p class="description">ربنا يديمك ليا حاجة حلوة مبتخلصش أبداً.</p>
+            <button class="start-btn" onclick="location.reload()">إعادة الرحلة 🔄</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
